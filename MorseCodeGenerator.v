@@ -13,6 +13,7 @@ reg[12:0]din;
 always @*
 begin
     case(inp)
+        //Look up Table 
     "a":din = 13'b0101110000000;
     "b":din = 13'b0111010101000;
     "c":din = 13'b0111010111010;
@@ -54,6 +55,7 @@ reg [3:0] cnt;
 always @*
         begin
         case(cnt)
+            // PISO Logic for FPGA output
         1:dout=din[12];
         2:dout=din[11];
         3:dout=din[10];
@@ -76,6 +78,7 @@ initial begin
     counter = 0;
     clk = 0;
 end
+    // clock calculations for WPM (assumin we use 50MHz clock)
 always @(posedge clkin) begin
     if (counter == 0) begin
         counter <= 4999999;
